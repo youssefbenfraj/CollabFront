@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class FileUploadService {
-  private apiUrl = 'http://localhost:8087/files/upload';
-  private baseUrl = 'http://localhost:8087/files/listfiles'; 
+  private apiUrl = 'http://192.168.146.137:8087/files/upload';
+  private baseUrl = 'http://192.168.146.137:8087/files/listfiles'; 
 
   constructor(private http: HttpClient) { }
 
