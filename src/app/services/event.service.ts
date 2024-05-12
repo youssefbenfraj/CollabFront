@@ -12,7 +12,7 @@ import { AppEvent } from '../frontoffice/event-calendar/event.model';
   providedIn: 'root'
 })
 export class EventService {
-  private baseUrl = 'http://localhost:8087'; // Update with your backend base URL
+  private baseUrl = 'http://192.168.146.137:8087'; // Update with your backend base URL
 
   constructor(private http: HttpClient, private authService: AuthService) { }
   
