@@ -10,7 +10,7 @@ import { DocumentService } from './document.service';
 })
 export class PaymentService {
 
-  private apiUrl = 'http://localhost:8087/create-checkout-session';
+  private apiUrl = 'http://192.168.146.137:8087/create-checkout-session';
 
   constructor(private http: HttpClient,private documentService: DocumentService) { }
 
