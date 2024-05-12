@@ -11,7 +11,7 @@ import { User } from '../../models/user.model';
 })
 export class RevisionService {
 
-  private baseUrl = 'http://localhost:8087';  
+  private baseUrl = 'http://192.168.146.137:8087';  
 
   constructor(private http: HttpClient) { }
 //avant sans useId
