@@ -1,0 +1,32 @@
+<app-header></app-header>
+
+<section *ngIf="selectedComplaint" class="py-5 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Update Complaint</h2>
+            <form (submit)="updateComplaint(selectedComplaint)">
+              <div class="mb-3">
+                <label for="comment" class="form-label">Comment</label>
+                <textarea id="comment" class="form-control" rows="3" name="comment" [(ngModel)]="selectedComplaint.comment" required></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="traitement" class="form-label">Treatment</label>
+                <select id="traitement" class="form-select" name="traitement" [(ngModel)]="selectedComplaint.traitement" required>
+                  <option value="TRAITE">Processed</option>
+                  <option value="NONTRAITE">Unprocessed</option>
+                </select>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-danger">Update</button>
+              </div>
+            </form>
+            <div *ngIf="!isWithinTimeLimit" class="text-danger mt-3 text-center">Sorry, modifications are not allowed after 24 hours.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="col-md-12 text-center">
+      <h1 class="title">Welcome! How can I assist you today?</h1>
+      <hr>
+  
+      <div *ngFor="let message of messages" class="message-container">
+        <div class="message" [ngClass]="{'from': message.author === 'bot', 'to': message.author === 'user'}">
+          {{ message.content }}
+        </div>
+      </div>
+  
+    </div>
+  
+    <div class="col-md-12 text-center">
+      <label *ngIf="messages.length === 0; else dialogInfo" for="nameField" class="help">Our team is ready to help you</label>
+  
+      <div class="input-container">
+        <input [(ngModel)]="value" (keyup.enter)="sendMessage()" type="text" class="form-control chat-input">
+        <button class="custom-btn" (click)="sendMessage()">Send</button>
+      </div>
+  
+     
+    </div>
+  </div>
+  

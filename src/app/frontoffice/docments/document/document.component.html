@@ -1,0 +1,168 @@
+<app-header></app-header>
+<main>
+    <section class="bg-blue align-items-center d-flex" style="background:url('/assets/images/sousou.jpg') no-repeat center center; background-size:cover;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <!-- Title -->
+                      <h1 class="event-title" style="color: rgb(111, 19, 19); ">Need help to revise?</h1>
+                      <h5 class="event-title"style="color: rgb(111, 19, 19); ;">Find your needs here</h5>
+                      <!-- Breadcrumb -->
+                    <div class="d-flex justify-content-center">
+                        <!-- Breadcrumb -->
+                        <div class="d-flex justify-content-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb breadcrumb-dark breadcrumb-dots mb-0">
+                                    <li class="breadcrumb-item" style="color: black;">Home</li>
+                                    <li class="breadcrumb-item active" style="color: black;" aria-current="page">Documents</li>
+                                </ol>
+                            </nav>
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>   
+
+    
+    
+    <!-- Page content START -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Main content START -->
+                <div class="col-lg-8 col-xl-9">
+                    <!-- Course Grid START -->
+                    <div class="row g-4">
+                        <div>
+                            <button mat-raised-button color="warn" type="submit" (click)="openAddDocumentDialog()">Add Document</button>
+                        </div>
+                        
+                        <div class="col-sm-6 col-xl-4" *ngFor="let document of displayedDocuments">
+                            <div class="card action-trigger-hover border">
+                                <!-- Content -->
+                                <div class="card-body pb-0">
+                                    <p class="mb-2"><strong>Module:</strong> {{ document.module }}</p>
+                                    <h5 class="card-title" style="color: brown;">{{ document.titleDoc }}</h5>
+                                    <p class="mb-2 text-truncate-2">{{ document.content }}</p>
+                                    <!-- Price -->
+                                    <div class="d-flex justify-content-between" style="padding-left: 60%;">
+                                        <h4 class="text-success mb-0 item-show" *ngIf="document.price === 0">Free</h4>
+                                        <h4 class="text-success mb-0 item-show" *ngIf="document.price !== 0">{{ document.price }} DT</h4>
+                                        <a href="#" class="btn btn-sm btn-success-soft item-show-hover" (click)="$event.preventDefault(); buy(document);">
+                                            <i class="fas fa-shopping-cart me-2"></i>Buy
+                                          </a>
+                                          
+                                        
+                                    </div>
+                                </div>
+                                <!-- Card footer -->
+                                <div class="card-footer pt-0">
+                                    <hr>
+                                    <!-- Additional details -->
+                                    <div class="d-flex justify-content-between">
+                                        <!-- Duration 
+                                        <div class="hstack gap-2">
+                                            <p class="text-warning m-0">4.5<i class="fas fa-star text-warning ms-1"></i></p>
+                                        </div>
+                                        -->
+                                        <!-- user propriétaire 
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ document.user?.imageUser }}" alt="User Image" width="30" height="30">
+                                            <span class="h6 fw-light mb-0 ms-2">{{ document.user?.username }}</span>
+                                        </div> 
+                                        -->                                  
+                                     </div>
+                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Course Grid END -->
+
+                    <!-- Pagination START -->
+                    <div class="col-12">
+                        <nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
+                            <ul class="pagination pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                                <!-- Previous Page Button -->
+                                <li class="page-item mb-0" [class.disabled]="currentPage === 1">
+                                    <a class="page-link" href="#" (click)="goToPage(currentPage - 1, $event)" tabindex="-1">
+                                        <i class="fas fa-angle-double-left"></i>
+                                    </a>
+                                </li>
+
+                                <!-- Page Numbers -->
+                                <ng-container *ngFor="let page of pages">
+                                    <li class="page-item mb-0" [class.active]="currentPage === page">
+                                        <a class="page-link" href="#" (click)="goToPage(page, $event)">{{ page }}</a>
+                                    </li>
+                                </ng-container>
+
+                                <!-- Next Page Button -->
+                                <li class="page-item mb-0" [class.disabled]="currentPage === totalPages">
+                                    <a class="page-link" href="#" (click)="goToPage(currentPage + 1, $event)">
+                                        <i class="fas fa-angle-double-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- Pagination END -->
+                </div>
+                <!-- Main content END -->
+                
+                <!-- Filters START -->
+                <div class="col-lg-4 col-xl-3">
+                    <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasSidebar">
+                        <div class="offcanvas-header bg-light">
+                            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Filtres avancés</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasSidebar" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body p-3 p-lg-0">
+                            <!-- Filtre par module -->
+                            <div class="card card-body shadow p-4 mb-4">
+                                <h4 class="mb-3">Module</h4>
+                                <div class="col-12">
+                                    <div *ngFor="let module of modules">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="module{{ module.nomModule }}" [value]="module.nomModule" (change)="filterByModule(module.nomModule, $event)">
+                                            <label class="form-check-label" for="module{{ module.nomModule }}">{{ module.nomModule }}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Filtre par prix -->
+                            <div class="card card-body shadow p-4 mb-4">
+                                <h4 class="mb-3">Price</h4>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="priceFilter" id="priceAll" value="all" checked>
+                                        <label class="form-check-label" for="priceAll">All</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="priceFilter" id="priceFree" value="free">
+                                        <label class="form-check-label" for="priceFree">Free</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="priceFilter" id="pricePaid" value="paid">
+                                        <label class="form-check-label" for="pricePaid">Paid</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bouton de filtrage -->
+                            <div class="d-grid p-2 p-lg-0 text-center">
+                                <button class="btn btn-primary mb-0" (click)="applyFilters()">Filter Results</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Filters END -->
+                
+            </div><!-- Row END -->
+        </div>
+    </section>
+    <!-- Page content END -->
+
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,19 @@
+.custom-button {
+    padding: 10px 20px; /* Adjust padding as needed */
+    width: 20%;
+    border-radius: 8px; /* Add border-radius for rounded corners */
+    background-color: #007bff; /* Change background color */
+    color: #ffffff; /* Change text color */
+    font-weight: bold; /* Make text bold */
+    transition: background-color 0.3s ease; /* Add smooth transition */
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+  }
+  
+  .offcanvas-body, .d-grid {
+    display: flex;
+    flex-direction: column;
+}
+

@@ -1,0 +1,61 @@
+<div class="container mt-4">
+    <h5 class="text-danger mb-4">
+      <i class="bi bi-book-half"></i> <!-- Icône de livre -->
+      Exchange Book
+    </h5>
+    <form (ngSubmit)="onSubmit()" class="mb-3">
+      <div class="form-group">
+        <label for="phoneNumber" class="text-secondary">
+          <i class="bi bi-telephone-fill"></i> <!-- Icône de téléphone -->
+          Phone Number:
+        </label>
+        <!-- Utilisation de type="tel" et ajout d'un pattern pour n'autoriser que les chiffres -->
+       <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+         [(ngModel)]="phoneNumber" placeholder="Enter your phone number"
+         pattern="[0-9]{1,8}" maxlength="8" 
+         (input)="onInput($event)"
+         required>
+  
+        <button type="submit" class="btn btn-danger mt-3">
+          <i class="bi bi-arrow-right-square-fill"></i> <!-- Icône de soumission -->
+          Submit
+        </button>
+      </div>
+    </form>
+    
+  
+    <!-- Bouton pour ouvrir la fenêtre de chat -->
+    <div class="chat-invite mb-3">
+      <button class="btn btn-danger" (click)="toggleChat()">
+        <i class="bi bi-chat-dots-fill"></i> <!-- Icône de chat -->
+        If you want to chat, click here
+      </button>
+    </div>
+  
+   <!-- Conteneur de chat, initialement masqué -->
+  <div *ngIf="showChat" class="chat-container bg-light border rounded shadow animate-open">
+    <div class="chat-header bg-danger text-white p-3 d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+            <i class="bi bi-chat-right-text-fill"></i> <!-- Icône de chat -->
+            Chat
+        </h5>
+        <button class="btn btn-outline-light btn-sm" (click)="toggleChat()">
+            <i class="bi bi-x-lg"></i> <!-- Icône de fermeture -->
+        </button>
+    </div>
+    <div class="chat-messages p-3" style="max-height: 300px; overflow-y: auto; background-color: #f8f9fa;">
+        <div *ngFor="let message of messages | async" class="message mb-2">
+            <strong>{{ message.user }}:</strong> {{ message.content }}
+            <span class="text-muted" style="float: right;">{{ message.timestamp | date: 'shortTime' }}</span>
+        </div>
+    </div>
+    <div class="chat-input p-3 bg-white">
+        <div class="input-group">
+            <input type="text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type a message..." class="form-control">
+            <button (click)="sendMessage()" class="btn btn-danger">
+                <i class="bi bi-send-fill"></i> <!-- Icône d'envoi -->
+            </button>
+        </div>
+    </div>
+  </div>
+  

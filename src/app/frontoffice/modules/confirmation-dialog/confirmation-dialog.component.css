@@ -1,0 +1,27 @@
+button {
+    background-color: #aa1a04;
+    color: rgb(108, 106, 106);
+    padding: 14px 20px;
+    margin: 8px 4px; /* Réduit la marge */
+    border: none;
+    cursor: pointer;
+    width: 100%; /* Ajuste la largeur automatiquement */
+    opacity: 0.9;
+  }
+  
+  button:hover {
+    opacity: 1;
+  }
+h2{
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+
+img {
+    position: relative;
+    margin: auto;
+    margin-bottom: 0;
+    width: 200px;
+    height: 200px;
+}

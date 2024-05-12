@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Panier</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-list>
+    <mat-list-item *ngFor="let item of items">
+         <h4 mat-line>{{ item.titleDoc }}</h4>
+      <p mat-line>Price: {{ item.price }} DT</p>
+      <button mat-icon-button (click)="removeFromCart(item)">
+        <mat-icon>remove_shopping_cart</mat-icon>
+      </button>
+      <button mat-button color="warn" (click)="proceedToCheckout(item.idDoc)">Procéder au paiement</button>
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Annuler</button>
+ <!-- <button mat-button color="warn" (click)="proceedToCheckout()">Procéder au paiement</button>-->
+</mat-dialog-actions>

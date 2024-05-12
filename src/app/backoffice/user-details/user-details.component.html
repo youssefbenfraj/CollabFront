@@ -1,0 +1,119 @@
+<main>
+    <!-- Sidebar START -->
+    <app-side-bar></app-side-bar>
+    <!-- Sidebar END -->
+    
+    <!-- Page content START -->
+    <div class="page-content">
+        <!-- Top bar START -->
+        <app-top-bar></app-top-bar>
+        <!-- Top bar END -->
+    
+        <!-- Page main content START -->
+        <div class="page-content-wrapper border">
+            <div class="row g-4">
+                <!-- User table START -->
+                <div class="col-xxl-7">
+                    <div class="col-xxl-7">
+                        <div class="card bg-transparent border rounded-3 h-100">
+        
+                            <!-- Card header -->
+                            <div class="card-header bg-light border-bottom">
+                                <h5 class="card-header-title mb-0">Personal Information</h5>
+                            </div>
+        
+                            <!-- Card body START -->
+                            <div class="card-body">
+                                <!-- Profile picture -->
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar avatar-xl me-3">
+                                        <img class="avatar-img rounded-circle border border-white border-3 shadow" [src]="userDetails?.imageUser" alt="User Image">
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">{{ userDetails?.firstName }} {{ userDetails?.lastName }}</h5>
+                                        <p class="text-muted mb-0">{{ userDetails?.email }}</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Information START -->
+                                <div class="row">
+                                    <!-- Information item -->
+                                    <div class="col-md-6">
+                                        <ul class="list-group list-group-borderless">
+                                           
+                                            <li class="list-group-item">
+                                                <span>Email:</span>
+                                                <span class="h6 mb-0">{{ userDetails.email }}</span>
+                                            </li>
+        
+                                           
+                                            <li class="list-group-item">
+                                                <span>Description:</span>
+                                                <span class="h6 mb-0">{{ userDetails.description }}</span>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <span>LinkedIn:</span>
+                                                <span class="h6 mb-0">{{ userDetails.linkedinProfileUrl }}</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>Facebook:</span>
+                                                <span class="h6 mb-0">{{ userDetails.facebookUsername }}</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>Instagram:</span>
+                                                <span class="h6 mb-0">{{ userDetails.instagramUsername }}</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>YouTube:</span>
+                                                <span class="h6 mb-0">{{ userDetails.youtubeProfileUrl }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+        
+                                    <!-- Information item -->
+                                    <div class="col-md-6">
+                                        <ul class="list-group list-group-borderless">
+                                            <li class="list-group-item">
+                                                <span>First Name:</span>
+                                                <span class="h6 mb-0">{{ userDetails.firstName }} </span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>Last Name:</span>
+                                                <span class="h6 mb-0">{{ userDetails.lastName }}</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>Birthdate:</span>
+                                                <span class="h6 mb-0">{{ userDetails.birthdate }}</span>
+                                            </li>
+        
+                                            <li class="list-group-item">
+                                                <span>Level:</span>
+                                                <span class="h6 mb-0">{{ userDetails.level }}</span>
+                                            </li>
+        
+                                            <li class="list-group-item">
+                                                <span>Major:</span>
+                                                <span class="h6 mb-0">{{ userDetails.major }}</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span>Class Number:</span>
+                                                <span class="h6 mb-0">{{ userDetails.classNumber }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Information END -->
+                            </div>
+                            <!-- Card body END -->
+                        </div>
+                    </div>
+                    <!-- Personal information END -->
+                </div>
+                <!-- User table END -->
+            </div> 
+        </div>
+        <!-- Page main content END -->
+    </div>
+    <!-- Page content END -->
+</main>

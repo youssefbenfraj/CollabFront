@@ -1,0 +1,226 @@
+<main>
+    <!-- Sidebar START -->
+    <app-side-bar></app-side-bar>
+    <!-- Sidebar END -->
+    
+    <!-- Page content START -->
+    <div class="page-content">
+        <!-- Top bar START -->
+        <app-top-bar></app-top-bar>
+        <!-- Top bar END -->
+        
+        <!-- Page main content START -->
+        <div class="page-content-wrapper border">
+            <div class="row g-4">
+                <!-- Top rated course table START -->
+                <div class="col-xxl-7">
+                    <div class="card bg-transparent border h-100">
+                        <!-- Card header -->
+                        <div class="card-header bg-light border-bottom d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Add a new Student</h5>
+                        </div>
+                        
+                        <!-- Card body START -->
+                        <div class="card-body pb-0">
+                            <!-- Form -->
+                            <div class="row g-4">
+                                <form class="row gy-3 needs-validation" novalidate (ngSubmit)="onSubmit()" id="studentForm">
+                                    <!-- First Name and Last Name in the same line -->
+                                    <div class="row">
+                                        <!-- First Name -->
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" placeholder="First Name" required [(ngModel)]="firstName" name="firstName" pattern="[a-zA-Z]+">
+                                                <label for="firstName" class="form-label"><i class="fas fa-user"></i> First Name</label>
+                                                <div class="invalid-feedback">
+                                                    Please enter your first name.
+                                                    First name should contain only letters
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Last Name -->
+                                        <div class="col-md-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" placeholder="Last Name" required [(ngModel)]="lastName" name="lastName" pattern="[a-zA-Z]+">
+                                                <label for="lastName" class="form-label"><i class="fas fa-user"></i> Last Name</label>
+                                                <div class="invalid-feedback">
+                                                    Please enter your last name.
+                                                    Last name should contain only letters
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Username -->
+                                    <div class="col-12">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" placeholder="Username" [(ngModel)]="username" id="username" required name="username">
+                                            <label for="username" class="form-label"><i class="fas fa-user"></i> Username</label>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid username.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Email -->
+                                    <div class="col-12">
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control" placeholder="Email" required [(ngModel)]="email" name="email">
+                                            <label for="email" class="form-label"><i class="fas fa-envelope"></i> Email</label>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid email address.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Password -->
+                                    <div class="col-12">
+                                        <div class="form-floating mb-3">
+                                            <input type="password" class="form-control" placeholder="Password" required [(ngModel)]="password" name="password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$">
+                                            <label for="password" class="form-label"><i class="fas fa-lock"></i> Password</label>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid password. Password must contain at least 8 characters, including uppercase letter, lowercase letter, numbers, and special character.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Birthdate -->
+                                    <div class="col-12">
+                                        <input id="birthdate" class="form-control" type="date" required [(ngModel)]="birthdate" name="birthdate">
+                                        <div class="invalid-feedback">
+                                            <i class="fas fa-calendar"></i> Please select your birthdate.
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                        <div class="row g-3">
+                                            <div class="col-md-4">
+                                                <select class="form-select" id="level" required [(ngModel)]="level" name="level">
+                                                    <option value="" disabled selected>Level</option>
+                                                    <option *ngFor="let levelOption of levels" [value]="levelOption">{{ levelOption }}</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select your level.
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-md-4">
+                                                <select class="form-select" id="major" required [(ngModel)]="major" name="major">
+                                                    <option value="" disabled selected> Major</option>
+                                                    <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select your major.
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-md-4">
+                                                <select class="form-select" id="classNumber" placeholder="Class" required [(ngModel)]="classNumber" name="classNumber">
+                                                    <option value="" disabled selected> Class</option>
+                                                    <option *ngFor="let classNumberOption of classNumbers" [value]="classNumberOption">{{ classNumberOption }}</option>
+                                                </select>
+                                                <div class="invalid-feedback">
+                                                    Please select your class number.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        </div>
+                                        <!-- Image Upload -->
+                                        <div class="col-12">
+                                            <input type="file" (change)="onFileSelected($event)" class="form-control" id="imageUpload" required>
+                                            <div class="invalid-feedback">
+                                                Please upload your profile picture.
+                                            </div>
+                                        </div>
+                                        
+                                         
+                                    <!-- About me -->
+                                    <div class="col-12">
+                                        <label class="form-label">About me</label>
+                                        <textarea class="form-control" rows="3" [(ngModel)]="description" name="description"></textarea>
+                                        <div class="form-text">Brief description for the profile.</div> 
+                                    </div>
+                                    
+                                    <!-- Social media profile START -->
+                                    <div class="col-lg-6">
+                                        <div class="card bg-transparent border rounded-3">
+                                            <!-- Card header -->
+                                            <div class="card-header bg-transparent border-bottom">
+                                                <h5 class="card-header-title mb-0">Social media profile</h5>
+                                            </div>
+                                            <!-- Card body START -->
+                                            <div class="card-body">
+                                                <!-- LinkedIn username -->
+                                                <div class="mb-3">
+                                                    <label class="form-label"><i class="bi bi-linkenIn text-twitter me-2"></i>Enter LinkedIn</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="linkedinProfileUrl" name="linkedinProfileUrl" placeholder=" linkedin Profile Url">
+                                                </div>
+                                                
+                                                <!-- Facebook username -->
+                                                <div class="mb-3">
+                                                    <label class="form-label"><i class="fab fa-facebook text-facebook me-2"></i>Enter Facebook username</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="facebookUsername" name="facebookUsername" placeholder="Enter username">
+                                                </div>
+                                                
+                                                <!-- Instagram username -->
+                                                <div class="mb-3">
+                                                    <label class="form-label"><i class="fab fa-instagram text-instagram-gradient me-2"></i>Enter Instagram username</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="instagramUsername" name="instagramUsername" placeholder="Enter username">
+                                                </div>
+                                                
+                                                <!-- Youtube URL -->
+                                                <div class="mb-3">
+                                                    <label class="form-label"><i class="fab fa-youtube text-youtube me-2"></i>Add your YouTube profile URL</label>
+                                                    <input class="form-control" type="text" [(ngModel)]="youtubeProfileUrl" name="youtubeProfileUrl" placeholder="Enter youtube Profile Url">
+                                                </div>
+                                            </div>
+                                            <!-- Card body END -->
+                                        </div>
+                                    </div>
+                                    <!-- Social media profile END -->
+                                    
+                                        <div class="col-12">
+                                            <div class="d-grid">
+                                                <button class="btn btn-danger btn-lg" type="submit">Create </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                   
+              
+                            </div>
+                        </div>
+                        <!-- Table END -->
+                    </div>
+                    <!-- Card body END -->
+                    
+                    <!-- Card footer START -->
+                    <div class="card-footer bg-transparent">
+                        <!-- Pagination START -->
+                        <div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+                            <!-- Content -->
+                            <p class="mb-0 text-center text-sm-start">Showing 1 to 8 of 20 entries</p>
+                            <!-- Pagination -->
+                            <nav class="d-flex justify-content-center mb-0" aria-label="navigation">
+                                <ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                                    <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
+                                    <li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item mb-0"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item mb-0"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Pagination END -->
+                    </div>
+                    <!-- Card footer END -->
+                    
+                </div>
+            </div>
+            <!-- Top rated course table END -->
+            
+        </div>
+    </div>
+    <!-- Page content END -->
+
+</main>

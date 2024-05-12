@@ -1,0 +1,106 @@
+<main>
+    <!-- Sidebar START -->
+    <app-side-bar></app-side-bar>
+    <!-- Sidebar END -->
+
+  
+        
+        <!-- Top bar END -->
+    <!-- Page content START -->
+    <div class="page-content">
+        <!-- Top bar START -->
+        <app-top-bar></app-top-bar>
+        <!-- Page main content START -->
+        <div class="page-content-wrapper border" style="width: 140%; margin: auto;">
+            <div class="row g-4">
+                <!-- Event details START -->
+                <div class="col-xxl-7">
+                    <div class="col-xxl-100">
+                        <div class="card bg-transparent border rounded-3 h-100">
+                            <!-- Card header -->
+                            <div class="card-header bg-light border-bottom">
+                                <h5 class="card-header-title mb-0">Event Details</h5>
+                            </div>
+                            <!-- Card body START -->
+                            <div class="card-body">
+                                <!-- Event picture and basic info -->
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="avatar avatar-xl me-3">
+                                        <img class="avatar-img rounded-circle border border-white border-3 shadow" [src]="eventDetails?.photoUrl" alt="Event Image">
+                                    </div>
+                                    <div>
+                                        <h5 class="mb-0">{{ eventDetails?.titleEvent }}</h5>
+                                        <p class="text-muted mb-0">{{ eventDetails?.dateEvent }}</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Event details START -->
+                                <div class="row">
+                                    <!-- Event details item -->
+                                    <div class="col-md-6">
+                                        <ul class="list-group list-group-borderless">
+                                            <li class="list-group-item">
+                                                <span><i class="fas fa-calendar"></i> Date:</span>
+                                                <span class="h6 mb-0">{{ eventDetails?.dateEvent }}</span>
+                                            </li>
+        
+                                            <li class="list-group-item">
+                                                <span><i class="fas fa-align-left"></i> Description:</span>
+                                                <span class="h6 mb-0">{{ eventDetails?.description }}</span>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <span><i class="fas fa-user-plus"></i> Maximum Registrations:</span>
+                                                <span class="h6 mb-0">{{ eventDetails?.nbMaxInscrits }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+        
+                                    <!-- Event details item -->
+                                    <div class="col-md-6">
+                                        <ul class="list-group list-group-borderless">
+                                            <li class="list-group-item">
+                                                <span><i class="fas fa-map-marker-alt"></i> Location:</span>
+                                                <span class="h6 mb-0">{{ eventDetails.location }}</span>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <span><i class="fas fa-clock"></i> Duration:</span>
+                                                <span class="h6 mb-0">{{ eventDetails.duree }}</span>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <span><i class="fas fa-chalkboard-teacher"></i> Trainers:</span>
+                                                <span class="h6 mb-0">{{ eventDetails.formateurs }}</span>
+                                            </li>
+                                            
+                                            <li class="list-group-item">
+                                                <span><i class="fas fa-file-alt"></i> Participation Modalities:</span>
+                                                <span class="h6 mb-0">{{ eventDetails.modalitesParticipation }}</span>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <span><i class="fas fa-money-bill-alt"></i> Cost:</span>
+                                                <span class="h6 mb-0">{{ eventDetails.cout }}</span>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <span><i class="fas fa-clipboard-check"></i> Prerequisites:</span>
+                                                <span class="h6 mb-0">{{ eventDetails.prerequis }}</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Event details END -->
+                            </div>
+                            <!-- Card body END -->
+                        </div>
+                    </div>
+                    <!-- Event details END -->
+                </div>
+                <!-- Event details END -->
+            </div> 
+        </div>
+        <!-- Page main content END -->
+    </div>
+    <!-- Page content END -->
+</main>

@@ -1,0 +1,118 @@
+<main>
+    <!-- Sidebar START -->
+    <app-side-bar></app-side-bar>
+    <!-- Sidebar END -->
+    
+    <!-- Page content START -->
+    <div class="page-content">
+        <!-- Top bar START -->
+        <app-top-bar></app-top-bar>
+        <!-- Top bar END -->
+    
+        <!-- Page main content START -->
+        <div class="page-content-wrapper border ">
+            <div class="row g-4" >
+                <!-- Event table START -->
+                <div class="col-xxl-100">
+                    <div class="card bg-transparent border h-100">
+                        <!-- Card header -->
+                        <div class="card-header bg-light border-bottom d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Events</h5>
+                            <button class="btn btn-danger mb-0" [routerLink]="['/addEvent']" >
+                                Create event
+                            </button>
+                        </div>
+                        <!-- Card body START -->
+                        <div class="card-body pb-0">
+                            <!-- Table START -->
+                            <div class="table-responsive border-0">
+                                <table class="table table-dark-gray align-middle p-4 mb-0 table-hover">
+                                    <!-- Table head -->
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 rounded-start">Picture</th>
+                                            <th scope="col" class="border-0">Title</th>
+                                            <th scope="col" class="border-0">Date</th>
+                                            <th scope="col" class="border-0">Description</th>
+                                            <th scope="col" class="border-0">Max Participants</th>
+                                            <th scope="col" class="border-0">Location</th>
+                                            <th scope="col" class="border-0">Duration</th>
+                                            <th scope="col" class="border-0">Trainers</th>
+                                            <th scope="col" class="border-0">Participation Modalities</th>
+                                            <th scope="col" class="border-0">Cost</th>
+                                            <th scope="col" class="border-0">Prerequisites</th>
+                                            <th scope="col" class="border-0">Average Rating</th>
+                                            <th scope="col" class="border-0 rounded-end">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- Table body START -->
+                                    <tbody>
+                                        <tr *ngFor="let event of events">
+                                            <!-- Table data for Picture -->
+                                            <td class="text-center text-sm-start d-flex align-items-center position-relative">
+                                                <div class="w-60px">
+                                                    <img [src]="event.photoUrl" alt="Event Picture" width="60" height="60">
+                                                </div>
+                                            </td>
+                                            <!-- Table data for other event properties -->
+                                            <td>{{ event.titleEvent }}</td>
+                                            <td>{{ event.dateEvent }}</td>
+                                            <td>{{ event.description }}</td>
+                                            <td>{{ event.nbMaxInscrits }}</td>
+                                            <td>{{ event.location }}</td>
+                                            <td>{{ event.duree }}</td>
+                                            <td>{{ event.formateurs }}</td>
+                                            <td>{{ event.modalitesParticipation }}</td>
+                                            <td>{{ event.cout }}</td>
+                                            <td>{{ event.prerequis }}</td>
+                                            <td>{{ event.averageRating }}</td>
+                                            <!-- Table data for Actions -->
+                                            <td>
+                                                <button class="btn btn-success-soft btn-round me-1 mb-1 mb-md-0" (click)="editEvent(event.idEvent)">
+                                                    <i class="bi bi-pencil-square"></i>
+                                                </button>
+                                                <button class="btn btn-danger-soft btn-round me-1 mb-1 mb-md-0" (click)="deleteEvent(event.idEvent)">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
+                                                <button class="btn btn-sm btn-info-soft mb-0" (click)="viewEventDetails(event.idEvent)">
+                                                    View
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <!-- Table body END -->
+                                </table>
+                            </div>
+                            <!-- Table END -->
+                        </div>
+                        <!-- Card body END -->
+                        <!-- Card footer START -->
+                        <div class="card-footer bg-transparent">
+                            <!-- Pagination START -->
+                            <div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+                                <!-- Content -->
+                                <p class="mb-0 text-center text-sm-start">Showing 1 to 8 of 20 entries</p>
+                                <!-- Pagination -->
+                                <nav class="d-flex justify-content-center mb-0" aria-label="navigation">
+                                    <ul class="pagination pagination-sm pagination-primary-soft d-inline-block d-md-flex rounded mb-0">
+                                    <li class="page-item mb-0"><a class="page-link" href="#" tabindex="-1"><i class="fas fa-angle-left"></i></a></li>
+                                    <li class="page-item mb-0"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item mb-0 active"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item mb-0"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item mb-0"><a class="page-link" href="#"><i class="fas fa-angle-right"></i></a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <!-- Pagination END -->
+                        
+                    </div>
+                    <!-- Card footer END -->
+                </div>
+            </div>
+            <!-- User table END -->
+        </div> 
+    </div>
+    <!-- Page main content END -->
+</div>
+<!-- Page content END -->
+</main>

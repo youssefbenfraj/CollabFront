@@ -1,0 +1,35 @@
+<!-- update-book-dialog.component.html -->
+<h1 mat-dialog-title style="font-size: 25px;">Edit Book</h1>
+<div mat-dialog-content>
+  <form (ngSubmit)="onSave()" class="edit-book-form">
+    <!-- Titre du livre -->
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Titre du livre" [(ngModel)]="data.book.titleBook" name="titleBook" required>
+    </mat-form-field>
+
+    <!-- Description du livre -->
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Description" [(ngModel)]="data.book.description" name="description" required></textarea>
+    </mat-form-field>
+
+    <!-- Langue du livre -->
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Langue" [(ngModel)]="data.book.language" name="language" required>
+    </mat-form-field>
+
+    <!-- Disponibilité du livre -->
+    <mat-form-field class="full-width">
+      <mat-label>AVAILIBILITY</mat-label>
+      <mat-select [(ngModel)]="data.book.isAvailable" name="isAvailable" required>
+        <mat-option value="0">AVAILABLE</mat-option>
+        <mat-option value="1">NOTAVALIBLE</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Actions pour sauvegarder ou annuler les modifications -->
+    <div class="clearfix">
+      <button mat-raised-button class="btn btn-danger" type="submit">SAVE</button>
+      <button mat-raised-button class="btn btn-secondary" type="button" (click)="onNoClick()">CANCEL</button>
+          </div>
+  </form>
+</div>

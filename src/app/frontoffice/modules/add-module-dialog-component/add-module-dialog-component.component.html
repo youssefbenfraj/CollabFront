@@ -1,0 +1,22 @@
+<div class="title">
+    <h1>Add Module</h1>
+    </div>
+    <form (submit)="onSubmit()" class="module-form">
+      <mat-form-field appearance="fill">
+        <mat-label>Module Name</mat-label>
+        <input matInput type="text" [(ngModel)]="newModule.nomModule" name="nomModule" required>
+        <mat-error *ngIf="!newModule.nomModule.trim()">Module Name is required</mat-error>
+      </mat-form-field>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Niveau</mat-label>
+        <mat-select [(ngModel)]="newModule.niveau" name="niveau" required>
+          <mat-option *ngFor="let niveau of niveaux" [value]="niveau">{{ niveau }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="!newModule.niveau">Niveau is required</mat-error>
+      </mat-form-field>
+    <div>
+      <button mat-raised-button type="submit" color="primary">Add Module</button>
+    </div>
+    </form>
+    

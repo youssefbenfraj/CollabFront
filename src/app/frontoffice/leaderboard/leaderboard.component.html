@@ -1,0 +1,103 @@
+<app-header></app-header>
+
+<!-- Navigation Tabs -->
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" id="student-leaderboard-tab" data-bs-toggle="tab" href="#student-leaderboard" role="tab" aria-controls="student-leaderboard" aria-selected="true">Student Leaderboard👩🏻‍🎓🏆
+      </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="event-leaderboard-tab" data-bs-toggle="tab" href="#event-leaderboard" role="tab" aria-controls="event-leaderboard" aria-selected="false">Event Leaderboard</a>
+  </li>
+</ul>
+
+<!-- Tab Content -->
+<div class="tab-content">
+  <!-- Student Leaderboard -->
+  <div class="tab-pane fade show active" id="student-leaderboard" role="tabpanel" aria-labelledby="student-leaderboard-tab">
+    <div class="container mt-3">
+      <h2>Student Leaderboard</h2>
+      <div class="card overflow-hidden">
+        <div class="table-responsive">
+          <table class="table table-borderless table-thead-bordered table-nowrap table-text-center table-align-middle card-table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" style="width: 2rem;">Rank</th>
+                <th scope="col" class="table-text-start">Image</th>
+                <th scope="col" class="table-text-start">Username</th>
+
+                <th scope="col">Cycle Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users; let i = index">
+                <td>
+                  <span [ngClass]="{'text-warning': i === 0, 'text-secondary': i === 1, 'text-muted': i > 1}" style="font-size: 1.5rem;">
+                    {{ i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1 }}
+                  </span>
+                </td>
+               
+               
+                <td >
+                    <img [src]="user.imageUrl || 'path/to/default-image.jpg'" class="user-image" alt="user image">
+                </td>
+                <td class="table-text-start">
+                    {{ user.username }}
+                </td>
+                <td>
+                  {{ user.cycleCount }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Event Leaderboard -->
+  <div class="tab-pane fade" id="event-leaderboard" role="tabpanel" aria-labelledby="event-leaderboard-tab">
+    <div class="container mt-3">
+      <h2>Event Leaderboard</h2>
+      <div class="card overflow-hidden">
+        <div class="table-responsive">
+          <table class="table table-borderless table-thead-bordered table-nowrap table-text-center table-align-middle card-table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" style="width: 2rem;">Rank</th>
+                <th scope="col" class="table-text-start">Event Title</th>
+                <th scope="col">Date</th>
+                <th scope="col">Average Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let event of events; let i = index">
+                <td>
+                  <span [ngClass]="{'text-warning': i === 0, 'text-secondary': i === 1, 'text-muted': i > 1}" style="font-size: 1.5rem;">
+                    {{ i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : i + 1 }}
+                  </span>
+                </td>
+                <td class="table-text-start">
+                  <a class="d-flex align-items-center">
+                    <div class="avatar avatar-circle">
+                      <img [src]="event.photoUrl" class="card-img-top" alt="event image">
+                    </div>
+                    <div class="ms-3">
+                      <span class="d-block h5 text-inherit mb-0">{{ event.titleEvent }}</span>
+                    </div>
+                  </a>
+                </td>
+                <td>{{ event.dateEvent | date: 'mediumDate' }}</td>
+                <td>
+                  <i class="bi-star-fill text-warning me-1"></i> {{ event.averageRating | number: '1.1-2' }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

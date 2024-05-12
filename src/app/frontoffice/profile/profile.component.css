@@ -1,0 +1,84 @@
+.badge-icon {
+    width: 60px;  /* Adjust size as needed */
+    height: 60px;  /* Adjust size as needed */
+    vertical-align: middle;
+    margin-right: 30px;  /* Space between the badge image and text */
+}
+
+.badge-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;  /* Centers badge content if there's extra space */
+    margin-left: 100px;  /* Increased space between the username and badge */
+}
+.d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* Positions children at the start and end */
+    width: 100%;  /* Ensure the container fills the parent width */
+}
+.badge-title {
+    margin-right: 30px; /* Adjust the value as needed */
+}
+.badge-image {
+    width: 100px; /* Adjust size as necessary */
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.badge-name {
+    visibility: hidden;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 120px;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75); /* Tooltip background */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: visibility 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+}
+
+.badge-container:hover .badge-name {
+    visibility: visible;
+    opacity: 1;
+}
+
+.col-auto {
+    position: relative;
+}
+.card {
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 8px;
+    padding: 20px;
+}
+
+h2, h4 {
+    color: #333; /* Dark grey text for headings */
+}
+
+p {
+    color: #666; /* Lighter text for paragraph */
+    line-height: 1.6; /* More readable line spacing */
+}
+
+.badge-image {
+    width: 100px; /* Adjust size as necessary */
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+
+
+.badge-container:hover .badge-name {
+    visibility: visible;
+    opacity: 1;
+}
+
+.col-auto {
+    position: relative;
+}

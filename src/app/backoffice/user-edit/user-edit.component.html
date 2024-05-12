@@ -1,0 +1,127 @@
+<main>
+    <!-- Sidebar START -->
+    <app-side-bar></app-side-bar>
+    <!-- Sidebar END -->
+    
+    <!-- Page content START -->
+    <div class="page-content">
+        <!-- Top bar START -->
+        <app-top-bar></app-top-bar>
+        <!-- Top bar END -->
+        
+        <!-- user-edit.component.html -->
+        <div class="page-content-wrapper border">
+            <div class="row g-4">
+                <!-- Top rated course table START -->
+                <div class="col-xxl-7">
+                    <div class="card bg-transparent border h-100">
+                        <!-- Card header -->
+                        <div class="card-header bg-light border-bottom d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Edit Student</h5>
+                        </div>
+                        
+                        <!-- Card body START -->
+                        <div class="card-body pb-0">
+                            <!-- Form -->
+                            <div class="row g-4">
+                                <div *ngIf="userEdit">
+                                    <form class="row gy-3 needs-validation">
+                                        <div class="row g-4 mt-4">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="firstName">First Name:</label>
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="firstName" [(ngModel)]="userEdit.firstName" name="firstName">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="lastName">Last Name:</label>
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="lastName" [(ngModel)]="userEdit.lastName" name="lastName">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="username">Username:</label>
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" id="username" [(ngModel)]="userEdit.username" name="username">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="email">Email:</label>
+                                                <div class="form-floating">
+                                                    <input type="email" class="form-control" id="email" [(ngModel)]="userEdit.email" name="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label for="birthdate">Birthdate:</label>
+                                                <div class="form-floating">
+                                                    <input type="date" class="form-control" id="birthdate" [(ngModel)]="userEdit.birthdate" name="birthdate">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="level">Level:</label>
+                                                <select class="form-select" id="level" [(ngModel)]="userEdit.level" name="level">
+                                                    <option value="" disabled selected>Level</option>
+                                                    <option *ngFor="let level of levels" [value]="level">{{ level }}</option>
+                                                </select>
+                                            </div>
+                                            <!-- Example for Major -->
+                                            <div class="col-md-6 mb-3">
+                                                <label for="major">Major:</label>
+                                                <select class="form-select" id="major" [(ngModel)]="userEdit.major" name="major">
+                                                    <option value="" disabled selected>Major</option>
+                                                    <option *ngFor="let major of options" [value]="major">{{ major }}</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label for="classNumber">Class Number:</label>
+                                                <select class="form-select" id="classNumber"  [(ngModel)]="userEdit.classNumber" name="classNumber">
+                                                    <option value="" disabled selected>Class Number</option>
+                                                    <option *ngFor="let classNumber of classNumbers" [value]="classNumber">{{ classNumber }}</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label for="imageUpload">Profile Picture:</label>
+                                                <input type="file" class="form-control" id="imageUpload" name="image">
+                                                <div class="invalid-feedback">
+                                                    Please upload your profile picture.
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-3">
+                                                <label for="aboutMe">About Me:</label>
+                                                <textarea class="form-control" id="aboutMe" rows="3" [(ngModel)]="userEdit.aboutMe" name="aboutMe"></textarea>
+                                                <div class="form-text">Brief description for the profile.</div> 
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label for="linkedInUsername"><i class="bi bi-linkenIn text-twitter me-2"></i>LinkedIn:</label>
+                                                <input class="form-control" type="text" [(ngModel)]="userEdit.linkedInUsername" id="linkedInUsername" name="linkedInUsername" >
+
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label for="facebookUsername"><i class="fab fa-facebook text-facebook me-2"></i>Facebook:</label>
+                                                <input class="form-control" type="text" [(ngModel)]="userEdit.facebookUsername" name="facebookUsername" placeholder="Enter Facebook username">
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label for="instagramUsername"><i class="fab fa-instagram text-instagram-gradient me-2"></i>Instagram:</label>
+                                                <input class="form-control" type="text" [(ngModel)]="userEdit.instagramUsername" name="instagramUsername" placeholder="Enter Instagram username">
+                                            </div>
+                                            <div class="col-lg-6 mb-3">
+                                                <label for="youtubeUrl"><i class="fab fa-youtube text-youtube me-2"></i>YouTube:</label>
+                                                <input class="form-control" type="text" [(ngModel)]="userEdit.youtubeUrl" name="youtubeUrl" placeholder="Add your YouTube profile URL">
+                                            </div>
+                                        </div>
+                                        <div class="d-sm-flex justify-content-end">
+                                            <button type="button" class="btn btn-danger" (click)="updateUser()">Save Changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Table END -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content END -->
+</main>

@@ -1,0 +1,26 @@
+<!-- book-details.component.html -->
+<div class="container">
+    <h2>Manage Book Exchanges</h2>
+    <form (ngSubmit)="addExchange()">
+      <div class="mb-3">
+        <label for="bookTitle" class="form-label">Book Title</label>
+      </div>
+      <div class="mb-3">
+        <label for="exchangeDate" class="form-label">Exchange Date</label>
+        <input type="date" class="form-control" id="exchangeDate" [(ngModel)]="newExchange.dateExch" name="exchangeDate" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Add Exchange</button>
+    </form>
+  
+    <div class="list-exchanges mt-4">
+      <h3>Existing Exchanges</h3>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let exchange of exchanges">
+           {{ exchange.dateExch | date }}
+          <button (click)="selectExchange(exchange)" class="btn btn-secondary btn-sm">Edit</button>
+          <button (click)="deleteBook(exchange.idExch)" class="btn btn-danger btn-sm">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

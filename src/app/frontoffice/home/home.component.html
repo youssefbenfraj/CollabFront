@@ -1,0 +1,27 @@
+<app-header></app-header>
+<main>
+    
+    <!-- =======================
+    Main Banner START -->
+   
+      <section class="position-relative overflow-hidden pt-5 pt-lg-3">
+        <video id="myVideo" src="http://localhost:4200/assets/homevideo.mp4" controls autoplay></video>
+
+        <script>
+            const video = document.getElementById('myVideo');
+            
+            video.addEventListener('ended', function() {
+                video.currentTime = 0; // Reset the video to the beginning
+                video.play(); // Start playing the video again
+            });
+            
+            video.play(); // Start playing the video immediately
+        </script>
+                 </section>
+  
+   
+    <!-- =======================
+    Reviews END -->
+    
+    </main>
+    <app-footer></app-footer>

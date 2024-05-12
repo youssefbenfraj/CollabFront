@@ -1,0 +1,165 @@
+{
+    "questions": [{
+            "questionText": "She was grateful to all the volunteers ________ their help",
+            "options": [{
+                    "text": "for",
+                    "correct": true
+                },
+                {
+                    "text": "about"
+                },
+                {
+                    "text": "of"
+                },
+                {
+                    "text": "in"
+                }
+            ],
+            "explanation": "TS uses a colon (:) to separate the property name from the property type"
+        },
+        {
+            "questionText": "By the time Eric ________ at the airport, his flight had already departed",
+            "options": [{
+                    "text": "had arrived"
+                },
+                {
+                    "text": "has arrived"
+                },
+                {
+                    "text": "was arriving"
+                },
+                {
+                    "text": "arrived ",
+                    "correct": true
+                }
+            ],
+            "explanation": "enum is not used as a type in TypeScript"
+        },
+        {
+            "questionText": "Neil was reading the newspaper when he came ________ an article about an old friend of his",
+            "options": [{
+                    "text": "up with"
+                },
+                {
+                    "text": "across",
+                    "correct": true
+                },
+                {
+                    "text": "on"
+                },
+                {
+                    "text": "into"
+                }
+            ],
+            "explanation": "interfaces are typically used to list the properties and methods for an object"
+        },
+        {
+            "questionText": "Try ________ with olive oil. It'll taste better",
+            "options": [{
+                    "text": "cook"
+                },
+                {
+                    "text": "cooking ",
+                    "correct": true
+                },
+                {
+                    "text": "to cook"
+                },
+                {
+                    "text": "for cooking"
+                }
+            ],
+            "explanation": "number[] is another way of writing Array<number> in TypeScript"
+        },
+        {
+            "questionText": "Where’s the book I gave you? What ________ with it",
+            "options": [{
+                    "text": "have you done",
+                    "correct": true
+                },
+                {
+                    "text": "are you doing "
+                },
+                {
+                    "text": "have you been doing"
+                },
+                {
+                    "text": "had you doing"
+                }
+            ],
+            "explanation": "a constructor is used by a class to take in parameters"
+        },
+        {
+            "questionText": "This cake tastes very sweet.I think I put ______ sugar in it",
+            "options": [{
+                    "text": "many"
+                },
+                {
+                    "text": "too many"
+                },
+                {
+                    "text": "a lot "
+                },
+                {
+                    "text": "too much",
+                    "correct": true
+                }
+            ],
+            "explanation": "async is not used as an access modifier type in TypeScript"
+        },
+        {
+            "questionText": "Which sentence is grammatically correct?",
+            "options": [{
+                    "text": "I have already saw that movie"
+                },
+                {
+                    "text": "I have already seen that movie",
+                    "correct": true
+                },
+                {
+                    "text": "I have already see that movie"
+                },
+                {
+                    "text": " I have already seeing that movie"
+                }
+            ],
+            "explanation": "the export keyword allows for the information to be transmitted between files"
+        },
+        {
+            "questionText": "What is the correct form of the verb in this sentence? He ________ to the party last night",
+            "options": [{
+                    "text": "went",
+                    "correct": true
+                },
+                {
+                    "text": "go"
+                },
+                {
+                    "text": "goes"
+                },
+                {
+                    "text": "is going "
+                }
+            ],
+            "explanation": "filter is a method used to conditionally create a new array"
+        },
+        {
+            "questionText": "What is the correct past tense form of the verb <to swim>?",
+            "options": [{
+                    "text": "swam",
+                    "correct": true
+                },
+                {
+                    "text": "swimed"
+                },
+                {
+                    "text": "swum"
+                },
+                {
+                    "text": "swim"
+                }
+            ],
+            "explanation": "this.propertyName is the way to access a specific property within a class"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+/* Styles spécifiques au formulaire */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Espacement entre les éléments du formulaire */
+.form-control {
+    margin-bottom: 15px;
+}
+
+/* Style pour le bouton Ajouter */
+.btn-primary {
+    width: 100%;
+}

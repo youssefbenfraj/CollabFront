@@ -1,0 +1,581 @@
+<app-header></app-header>
+<main>
+
+    <!-- =======================
+    Page Banner START -->
+    <section class="bg-blue align-items-center d-flex" style="background:url('/assets/images/sousou.jpg') no-repeat center center; background-size:cover;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <!-- Title -->
+                  <h1 class="event-title " style="color: rgb(111, 19, 19); font-size: 50px;">Events</h1>
+                <!-- Breadcrumb -->
+                <div class="d-flex justify-content-center">
+                    <!-- Breadcrumb items would go here -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!-- =======================
+    Page Banner END -->
+    
+    <!-- =======================
+    Page content START -->
+    <section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Main content START -->
+            <div class="col-lg-8 col-xl-9">
+    
+                <!-- Search option START -->
+                <div class="row mb-4 align-items-center">
+                    <!-- Search bar -->
+                    <div class="col-xl-6">
+                        <form class="border rounded p-2">
+                            <div class="input-group input-borderless">
+<!-- Inside the form tag -->
+<input class="form-control me-1" type="search" placeholder="Find your event" [(ngModel)]="searchQuery">
+                                <button type="button" class="btn btn-primary mb-0 rounded z-index-1"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+    
+                    <!-- Select option -->
+                    
+                    <!-- Content -->
+                    <div class="col-12 col-xl-3 d-flex justify-content-between align-items-center mt-3 mt-xl-0">
+                        <!-- Advanced filter responsive toggler START -->
+                        <button class="btn btn-primary mb-0 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar">
+                            <i class="fas fa-sliders-h me-1"></i> Show filter
+                        </button>
+                        <!-- Advanced filter responsive toggler END -->
+                        <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#addNewcard">Create event</button>
+                    </div>
+    
+                </div>
+                <!-- Search option END -->
+    
+                <!-- Course Grid START -->
+               <!-- Course Grid START -->
+<div class="row g-4">
+
+    <section class="pb-5 pt-0 pt-lg-5">
+        <div class="container">
+            <div class="row">
+
+                <!-- Slider START -->
+                <div class="tiny-slider arrow-round arrow-blur arrow-hover">
+                    <div class="tiny-slider-inner pb-1" data-autoplay="true" data-arrow="true" data-edge="2"
+                        data-dots="false" data-items="3" data-items-lg="2" data-items-sm="1">
+                        <!-- Card item START -->
+                        <div class="row">
+                        <div *ngFor="let event of events" class="col-md-6 mb-4"> <!-- Changed width to col-md-6 to fit two cards in a row -->
+                            <div>
+                                <div class="card action-trigger-hover border bg-transparent" >
+                                    <!-- Image -->
+                                    <img [src]="event.photoUrl" class="card-img-top" alt="course image" style="width: 100%; height: 200px; object-fit: cover;">
+
+                                    
+                                   
+                                    <!-- Card body -->
+                                    <div class="card-body pb-0">
+                                        <!-- Badge and favorite -->
+                                        <div class="d-flex justify-content-between mb-3">
+                                            <span class="hstack gap-2">
+                                                <a href="#"
+                                                    class="badge bg-primary bg-opacity-10 text-primary">{{ event.category }}</a>
+                                                <a href="#" class="badge text-bg-dark">{{ event.prerequis }}</a>
+                                            </span>
+                                            <a href="#" class="h6 fw-light mb-0"><i
+                                                    class="far fa-bookmark"></i></a>
+                                        </div>
+                                        <!-- Title -->
+                                        <h5 class="card-title" (click)="viewEventDetails(event.idEvent)">
+                                           {{ event.titleEvent }}
+                                          </h5>
+                                        <!-- Rating -->
+                                        <div class="d-flex justify-content-between mb-2">
+                                            <div class="hstack gap-2">
+                                                <p class="text-warning m-0">{{event.averageRating}}<i
+                                                        class="fas fa-star text-warning ms-1"></i></p>
+                                                <span class="small">(6500)</span>
+                                            </div>
+                                            <div class="hstack gap-2">
+                                                <p class="h6 fw-light mb-0 m-0">{{ event.nbMaxInscrits }}</p>
+                                                <span class="small">(Student)</span>
+                                            </div>
+                                        </div>
+                                        <!-- Time -->
+                                        <div class="hstack gap-3">
+                                            <span class="h6 fw-light mb-0"><i
+                                                    class="far fa-clock text-danger me-2"></i>{{ event.duree }}</span>
+                                            <span class="h6 fw-light mb-0"><i
+                                                    class="fas fa-table text-orange me-2"></i>{{ event.location }}</span>
+                                                    <span class="h6 fw-light mb-0"><i class="fa-solid fa-location-dot"></i>{{ event.dateEvent }}</span>
+                       
+                                                    
+                                        </div>
+                                        <div class="d-flex justify-content-between mb-2">
+
+                                        <div class="hstack gap-2">
+
+                                            <p class="h6 fw-light mb-0 m-0"><i class="fas fa-user"></i> instructors : {{ event.formateurs }}</p>
+                                    </div>
+                                        </div>
+                                    </div>
+                                    <!-- Card footer -->
+
+                                    <div class="card-footer pt-0 bg-transparent">
+                                        <hr>
+                                        <!-- Avatar and Price -->
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div *ngIf="eventDetails">
+                                            <!-- Avatar -->
+                                            <div class="d-flex align-items-center">
+                                                <div class="avatar avatar-sm">
+                                                    <img class="avatar-img rounded-1"
+                                                    [src]="eventDetails.userList[0]?.imageUser" alt="avatar">
+                                                </div>
+                                                <p class="mb-0 ms-2"><a href="#"
+                                                        class="h6 fw-light mb-0">{{ eventDetails.userList[0]?.firstName }} {{ eventDetails.userList[0]?.lastName }}</a></p>
+                                            </div>
+                                        </div>
+                                            <!-- Price -->
+                                            <div>
+                                                <h4 class="text-success mb-0 item-show">{{event.cout}}</h4>
+                                            </div>
+                                            <td>
+                                                <button class="btn btn-sm btn-success-soft btn-round me-1 mb-0"
+                                                *ngIf="currentUser && event.userList?.length && currentUser.id === event.userList[0]?.idUser"
+                                                data-bs-toggle="modal" data-bs-target="#editEventModal" 
+                                                (click)="selectEventForEdit(event)">
+                                            <i class="far fa-fw fa-edit"></i> 
+                                        </button>
+                                        
+                                        <button class="btn btn-sm btn-danger-soft btn-round mb-0"
+                                                *ngIf="currentUser && event.userList?.length && currentUser.id === event.userList[0]?.idUser"
+                                                (click)="deleteEvent(event.idEvent)">
+                                            <i class="fas fa-fw fa-times"></i> 
+                                        </button>
+                                        
+                                        
+                                        
+                                        </td>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div>Current Page: {{ getCurrentPageNumber() }}</div>
+
+                            <mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[8, 16, 20]" (page)="onPageChange($event)"></mat-paginator>
+                            
+             
+                                      </div>
+                      </div>
+                        <!-- Card item END -->
+                    </div>
+                </div>
+                <!-- Slider END -->
+            </div>
+        </div>
+
+        </div>
+    </section>
+ 
+</div>
+
+<!-- Course Grid END -->
+
+                <!-- Course Grid END -->
+    
+              
+            </div>
+            <!-- Main content END -->
+    
+            <!-- Right sidebar START -->
+            <div class="col-lg-4 col-xl-3">
+                <!-- Responsive offcanvas body START -->
+                <div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasSidebar">
+                    <div class="offcanvas-header bg-light">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Advance Filter</h5>
+                        <button  type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasSidebar" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body p-3 p-lg-0">
+                        <form>
+                             <!-- Price START -->
+                             <div class="card card-body shadow p-4 mb-4">
+                                <!-- Load My Events Button -->
+<!-- Filter My Events Button -->
+<button class="btn btn-primary mt-3" *ngIf="currentUser" (click)="filterMyEvents()">
+Show My Events
+</button>
+
+
+                            </div>
+                            <!-- Price END -->
+                                <!-- Category Filters -->
+                                <div class="card card-body shadow p-4 mb-4">
+                                    <h4 class="mb-3">Category</h4>
+                                    <!-- Checkbox -->
+                                    <div *ngFor="let category of categories" class="d-flex justify-content-between align-items-center">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" [id]="category" [value]="category" [checked]="selectedCategories[category]" (change)="toggleCategorySelection(category)">
+                                        <label class="form-check-label" [for]="category">{{ category }}</label>
+                                      </div>
+                                      <span class="small"></span> <!-- Replace "Count" with the actual count of events for each category -->
+                                    </div>
+                                    
+                                    <button class="btn btn-primary mt-3" (click)="filterEvents()">Apply Filters</button>
+
+                                  </div>
+                                  
+        
+                               
+        
+                                <div class="card card-body shadow p-4 mb-4">
+                                    <h4 class="mb-3">Skill Level</h4>
+                                    <ul class="list-inline mb-0">
+                                        <li class="list-inline-item mb-2" *ngFor="let prerequis of distinctPrerequis">
+                                            <input type="checkbox" class="btn-check" id="btn-check-{{ prerequis }}" (change)="filterByPrerequis(prerequis)">
+                                            <label class="btn btn-light btn-primary-soft-check" for="btn-check-{{ prerequis }}">{{ prerequis }}</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="card card-body shadow p-4 mb-4">
+
+                                <button class="btn btn-primary mt-3 ml-2" (click)="clearFilters()">Remove Filters</button>
+                            </div>
+                                <!-- Language START -->
+                                
+                                       
+                                <!-- Language END -->
+                        </form><!-- Form End -->
+                    </div>
+    
+                 
+                    
+    
+                </div>
+                <!-- Responsive offcanvas body END -->
+            </div>
+            <!-- Right sidebar END -->
+        </div><!-- Row END -->
+    </div>
+    </section>
+    <!-- =======================
+    Page content END -->
+    
+    <!-- =======================
+    Newsletter START -->
+    <section class="pt-0">
+    <div class="container position-relative overflow-hidden">
+        <!-- SVG decoration -->
+        <figure class="position-absolute top-50 start-50 translate-middle ms-3">
+            <svg>
+                <path d="m496 22.999c0 10.493-8.506 18.999-18.999 18.999s-19-8.506-19-18.999 8.507-18.999 19-18.999 18.999 8.506 18.999 18.999z" fill="#fff" fill-rule="evenodd" opacity=".502"/>
+                <path d="m775 102.5c0 5.799-4.701 10.5-10.5 10.5-5.798 0-10.499-4.701-10.499-10.5 0-5.798 4.701-10.499 10.499-10.499 5.799 0 10.5 4.701 10.5 10.499z" fill="#fff" fill-rule="evenodd" opacity=".102"/>
+                <path d="m192 102c0 6.626-5.373 11.999-12 11.999s-11.999-5.373-11.999-11.999c0-6.628 5.372-12 11.999-12s12 5.372 12 12z" fill="#fff" fill-rule="evenodd" opacity=".2"/>
+                <path d="m20.499 10.25c0 5.66-4.589 10.249-10.25 10.249-5.66 0-10.249-4.589-10.249-10.249-0-5.661 4.589-10.25 10.249-10.25 5.661-0 10.25 4.589 10.25 10.25z" fill="#fff" fill-rule="evenodd" opacity=".2"/>
+            </svg>
+        </figure>
+        <!-- Svg decoration -->
+        <figure class="position-absolute bottom-0 end-0 mb-5 d-none d-sm-block">
+            <svg class="rotate-130" width="258.7px" height="86.9px" viewBox="0 0 258.7 86.9">
+                <path stroke="white" fill="none" stroke-width="2" d="M0,7.2c16,0,16,25.5,31.9,25.5c16,0,16-25.5,31.9-25.5c16,0,16,25.5,31.9,25.5c16,0,16-25.5,31.9-25.5 c16,0,16,25.5,31.9,25.5c16,0,16-25.5,31.9-25.5c16,0,16,25.5,31.9,25.5s16-25.5,31.9-25.5"/>
+                <path stroke="white" fill="none" stroke-width="2" d="M0,57c16,0,16,25.5,31.9,25.5c16,0,16-25.5,31.9-25.5c16,0,16,25.5,31.9,25.5c16,0,16-25.5,31.9-25.5 c16,0,16,25.5,31.9,25.5c16,0,16-25.5,31.9-25.5c16,0,16,25.5,31.9,25.5s16-25.5,31.9-25.5"/>
+            </svg>
+        </figure>
+        
+      
+    </div>
+    </section>
+    <!-- =======================
+    Newsletter END -->
+    <div class="modal fade" id="addNewcard" tabindex="-1" aria-labelledby="addNewcardLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white" id="addNewcardLabel">Add Event</h5>
+                    <button type="button" class="btn btn-sm btn-light mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="modal-body">
+                
+                    <form (ngSubmit)="onSubmit(userData?.idUser || 94)" class="row text-start g-3" novalidate id="eventForm">
+                        <div class="row">
+                                <!-- Title -->
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" placeholder="Event Title " [(ngModel)]="titleEvent" name="titleEvent" required>
+                                        <label for="titleEvent" class="form-label">
+                                            <i class="fas fa-pen"></i>
+                                            <i class="fas fa-calendar-alt"></i> Event Title
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            Please enter the event title.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                              <!-- Description -->  
+                              <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" placeholder="description" [(ngModel)]="description" name="description" required>
+                                    <label for="description" class="form-label">
+                                        <i class="fas fa-align-left"></i> Description
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        Please enter the event description.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                                <!-- Date -->
+                                <div class="col-md-6">
+                                    <input id="dateEvent" class="form-control" type="date"  [(ngModel)]="dateEvent"
+                                         name="dateEvent">
+                                    <div class="invalid-feedback">
+                                        <i class="fas fa-calendar"></i> Please select the event date.
+                                    </div>
+                                </div>
+                            </div>
+    <!-- Image Upload -->
+    <div class="col-12">
+    <input type="file" (change)="onFileSelected($event)" class="form-control" id="imageUpload" >
+    <div class="invalid-feedback">
+    Please upload your Event picture.
+    </div>
+    </div>
+    
+    <!--  Maximum number of Registrants --> 
+    <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" placeholder="Maximum Registrants" [(ngModel)]="nbMaxInscrits" name="nbMaxInscrits" required>
+            <label for="nbMaxInscrits" class="form-label">
+                <i class="fas fa-users"></i> Maximum number of Registrants
+            </label>
+            <div class="invalid-feedback">
+                Please enter the maximum number of registrants.
+            </div>
+        </div>
+    </div>
+     <!--  location --> 
+     <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" placeholder="Location" [(ngModel)]="location" name="location" required>
+            <label for="location" class="form-label">
+                <i class="fas fa-map-marker-alt"></i> Location
+            </label>
+            <div class="invalid-feedback">
+                Please enter the location.
+            </div>
+        </div>
+    </div>
+   <!--  Event duration --> 
+   <div class="col-md-6">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="Duration" [(ngModel)]="duree" name="duree" required>
+        <label for="duree" class="form-label">
+            <i class="fas fa-clock"></i> Event Duration
+        </label>
+        <div class="invalid-feedback">
+            Please enter the event duration.
+        </div>
+    </div>
+</div>
+<!--  category -->
+<div class="col-md-6">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="Category" [(ngModel)]="category" name="category" required>
+        <label for="category" class="form-label">
+            <i class="fas fa-tags"></i> Category
+        </label>
+        <div class="invalid-feedback">
+            Please enter the category.
+        </div>
+    </div>
+</div>
+
+    <!--  Trainers -->
+    <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" placeholder="Trainers" [(ngModel)]="formateurs" name="formateurs" required>
+            <label for="formateurs" class="form-label">
+                <i class="fas fa-chalkboard-teacher"></i> Trainers
+            </label>
+            <div class="invalid-feedback">
+                Please enter the trainers' names.
+            </div>
+        </div>
+    </div>
+       <!-- Mode of Participation -->
+       <div class="col-md-6">
+        <div class="form-floating mb-3">
+            <select class="form-control" id="modalitesParticipation" [(ngModel)]="modalitesParticipation" name="modalitesParticipation">
+                <option value="Online">Online</option>
+                <option value="Onsite">Onsite</option>
+            </select>
+            <label for="modalitesParticipation" class="form-label">
+                <i class="fas fa-user-friends"></i> Mode of Participation
+            </label>
+        </div>
+    </div>
+    
+   <!-- prerequis field with select options -->
+   <div class="col-md-6">
+    <div class="form-floating mb-3">
+        <select class="form-control" id="prerequis" [(ngModel)]="prerequis" name="prerequis">
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+        <label for="prerequis" class="form-label">
+            <i class="fas fa-graduation-cap"></i> Prerequisites
+        </label>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="Cost" [(ngModel)]="cout" name="cout" required>
+        <label for="cout" class="form-label">
+            <i class="fas fa-dollar-sign"></i> Cost
+        </label>
+        <div class="invalid-feedback">
+            Please enter the cost.
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-6">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="Latitude" [(ngModel)]="latitude" name="latitude" required>
+        <label for="latitude" class="form-label">
+            <i class="fas fa-compass"></i> Latitude
+        </label>
+        <div class="invalid-feedback">
+            Please enter the latitude.
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" placeholder="Longitude" [(ngModel)]="longitude" name="longitude" required>
+        <label for="longitude" class="form-label">
+            <i class="fas fa-compass"></i> Longitude
+        </label>
+        <div class="invalid-feedback">
+            Please enter the longitude.
+        </div>
+    </div>
+</div>
+
+    
+                            <!-- Description -->
+                            <!-- Ajoutez les autres champs de formulaire ici -->
+    
+                            <!-- Bouton de soumission -->
+                            <div class="col-12">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-plus-circle"></i> Add Event
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </form>		
+                    
+                    
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger-soft my-0" data-bs-dismiss="modal">
+                        <i class="fas fa-times-circle"></i> Close
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="editEventModal" tabindex="-1" aria-labelledby="editEventModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-dark">
+                    <h5 class="modal-title text-white" id="editEventModalLabel">Edit Event</h5>
+                    <button type="button" class="btn btn-sm btn-light mb-0" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="modal-body">
+                    <form class="row g-3 needs-validation" novalidate id="eventForm">
+                        <div class="col-md-6 mb-3">
+                            <label for="titleEvent">Title:</label>
+                            <input type="text" class="form-control" id="titleEvent" [(ngModel)]="eventEdit.titleEvent" name="titleEvent">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="dateEvent">Date:</label>
+                            <input type="date" class="form-control" id="dateEvent" [(ngModel)]="eventEdit.dateEvent" name="dateEvent">
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="description">Description:</label>
+                            <textarea class="form-control" id="description" [(ngModel)]="eventEdit.description" name="description"></textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="nbMaxInscrits">Maximum Participants:</label>
+                            <input type="number" class="form-control" id="nbMaxInscrits" [(ngModel)]="eventEdit.nbMaxInscrits" name="nbMaxInscrits">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="location">Location:</label>
+                            <input type="text" class="form-control" id="location" [(ngModel)]="eventEdit.location" name="location">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="formateurs">Trainers:</label>
+                            <input type="text" class="form-control" id="formateurs" [(ngModel)]="eventEdit.formateurs" name="formateurs">
+                        </div>
+                       
+                        <div class="col-md-6 mb-3">
+                            <label for="duree">Duration:</label>
+                            <input type="text" class="form-control" id="duree" [(ngModel)]="eventEdit.duree" name="duree">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cout">cost:</label>
+                            <input type="text" class="form-control" id="cout" [(ngModel)]="eventEdit.cout" name="cost">
+                        </div>   
+                        <div class="col-md-6 mb-3">
+                            <label for="photoUrl">Image:</label>
+                            <input type="file" class="form-control" id="photoUrl" [(ngModel)]="eventEdit.photoUrl" name="photoUrl">
+                        </div>   
+                        <div class="col-md-6 mb-3">
+                            <label for="prerequis">Skill level:</label>
+                            <input type="text" class="form-control" id="prerequis" [(ngModel)]="eventEdit.prerequis" name="prerequis">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="modalitesParticipation">Participation:</label>
+                            <input type="text" class="form-control" id="modalitesParticipation" [(ngModel)]="eventEdit.modalitesParticipation" name="modalitesParticipation">
+                        </div> 
+                                   </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger-soft my-0" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="updateEvent()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+      
+    
+      
+      
+    
+    
+</main>
+<app-footer></app-footer>

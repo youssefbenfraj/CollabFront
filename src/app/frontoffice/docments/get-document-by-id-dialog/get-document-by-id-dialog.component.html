@@ -1,0 +1,42 @@
+<div style="padding: 10px;">
+<h1 style="color: brown;" mat-dialog-title>Document Details</h1>
+
+<div mat-dialog-content>
+  <div *ngIf="document">
+    <p><strong>Title:</strong> {{ document.titleDoc }}</p>
+    <p><strong>Module:</strong> {{ document.module }}</p>
+    <p><strong>Price:</strong> {{ document.price }}</p>
+    <p ><strong>Content:</strong> {{ document.content }}</p>
+
+  </div>
+  <div>
+  <ul>
+    <li *ngFor="let file of files">
+      <a href="{{ fileUrl(file) }}" target="_blank" download>{{ file }}</a>
+    </li>
+  </ul> 
+  </div> 
+</div>
+
+ 
+<div >
+  <button mat-icon-button class="edit-button" (click)="onEdit()">
+    <mat-icon class="edit-icon" aria-label="Edit document">edit</mat-icon>
+  </button>
+  <button mat-icon-button class="delete-button" (click)="onDelete()">
+    <mat-icon class="delete-icon" aria-label="Delete document">delete</mat-icon>
+  </button>
+</div>
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+  <mat-icon class="close-icon" aria-label="Close dialog">close</mat-icon>
+</button>
+
+<div class="sales-info">
+  <div class="total-sales">
+    <p><strong>Total number of sales :</strong> {{ nb }}</p>
+  </div>
+  <div class="total-amount">
+    <p><strong>Total amount of sales:</strong> {{ totprice }}</p>
+  </div>
+
+</div>

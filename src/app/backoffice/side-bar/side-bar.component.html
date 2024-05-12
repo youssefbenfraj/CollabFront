@@ -1,0 +1,47 @@
+<nav class="navbar sidebar navbar-expand-xl navbar-dark bg-dark">
+    
+    <!-- Navbar brand for xl START -->
+    <div class="d-flex align-items-center">
+        <a class="navbar-brand" href="index.html">
+            <img class="navbar-brand-item" src="assets/images/logo-espritcollab.png" alt="">
+        </a>
+    </div>
+    <!-- Navbar brand for xl END -->
+    
+    <div class="offcanvas offcanvas-start flex-row custom-scrollbar h-100" data-bs-backdrop="true" tabindex="-1" id="offcanvasSidebar">
+        <div class="offcanvas-body sidebar-content d-flex flex-column bg-dark">
+
+            <!-- Sidebar menu START -->
+            <ul class="navbar-nav flex-column" id="navbar-sidebar">
+                
+                <!-- Menu item 1 -->
+                <button class="nav-link btn btn-link" [routerLink]="['/dashboard']">
+                    <i class="fas fa-user-graduate fa-fw me-2"></i> Dashbord
+                </button>                
+                <!-- Title -->
+                <li class="nav-item ms-2 my-2">Pages</li>
+
+<div>
+    <button class="nav-link btn btn-link" [routerLink]="['/users']">
+        <i class="fas fa-user-graduate fa-fw me-2"></i> Students
+    </button>
+    <button class="nav-link btn btn-link" [routerLink]="['/listevent']">
+        <i class="fas fa-user-graduate fa-fw me-2"></i> Events
+    </button>
+  
+    
+                </div>
+              
+
+              
+            
+             
+                <!-- Menu item 3 -->
+            </ul>
+            <!-- Sidebar menu end -->
+
+       
+            
+        </div>
+    </div>
+</nav>

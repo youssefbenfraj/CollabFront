@@ -1,0 +1,490 @@
+<!-- **************** MAIN CONTENT START **************** -->
+<app-header></app-header>
+<main>
+   
+    <!-- =======================
+    Page content START -->
+    <div *ngIf="eventDetails">
+    <section class="pt-5">
+        <div class="container" data-sticky-container>
+            <div class="row g-4 g-sm-5">
+               
+                <!-- Left sidebar START -->
+                <div class="col-xl-4">
+                    <div data-sticky data-margin-top="80" data-sticky-for="992">
+                        <div class="row justify-content-center">
+                            <div class="col-md-8 col-xl-12">
+                                
+                            
+                           
+                           
+                               
+                                <!-- Card START -->
+                                <div class="card shadow">
+                                    <!-- Image -->
+                                    <div class="rounded-3">
+                                        <img [src]="eventDetails?.photoUrl"  class="card-img-top" alt="book image">
+                                    </div>
+                
+                                    <!-- Card body -->
+                                    <div class="card-body pb-3">
+                                        <!-- Buttons and price -->
+                                        <div class="text-center">
+                                            <!-- Buttons -->
+                                            
+                                            <button class="btn btn-danger mb-0" (click)="addReservation()">Add Reservation</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card END -->
+    
+                            </div>
+                        </div> <!-- Row End -->
+                    </div>
+                </div>
+                <!-- Left sidebar END -->
+                    
+                <!-- Main content START -->
+                <div class="col-xl-8">
+                
+                    <!-- Title -->
+                    <div class="content-header">
+                        <h1 class="mb-4">{{ eventDetails?.titleEvent }}</h1>
+                        <div class="social-sharing">
+                            <button title="Share this event">
+                                <i class="fas fa-share-alt"></i>
+                            </button>
+                            <button (click)="shareOnFacebook()" title="Share on Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button (click)="shareOnTwitter()" title="Share on Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                            <button (click)="shareOnLinkedIn()" title="Share on LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    
+
+                    
+                    
+                    <!-- Rating -->
+                    <div class="d-flex align-items-center mb-4">
+                        <h2 class="me-3 mb-0"> {{ averageRating }}</h2>
+                        <div>
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                <li class="list-inline-item me-0 small"><i class="fas fa-star-half-alt text-warning"></i></li>
+                            </ul>
+                            <p class="mb-0 small mt-n1">Reviews from our buyers</p>
+                        </div>
+                    </div>
+    
+                    <!-- Price Item START -->
+                    <ul class="list-inline mb-4">
+                        <!-- Price -->
+                       
+                                <!-- Price and discount -->
+                                
+                        <!-- Price -->
+                        
+                    </ul>
+                    <!-- Price Item END -->
+    
+                    <!-- Content -->
+                    
+                    <!-- Additional info -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <!-- List START -->
+                            <ul class="list-group list-group-borderless">
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="bi fa-fw bi-card-heading text-primary me-2"></i>Title:</span>
+                                    <span class="h6">{{ eventDetails?.titleEvent }}</span>
+                                </li>
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="bi fa-fw bi-calendar-fill text-primary me-2"></i>Date:</span>
+                                    <span class="h6">{{ eventDetails?.dateEvent }}</span>
+                                </li>
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="fas fa-fw fa-align-left text-primary me-2"></i>Description:</span>
+                                    <span class="h6">{{ eventDetails?.description}}</span>
+                                </li>
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="fas fa-fw fa-users text-primary me-2"></i>Maximum Attendees:</span>
+                                    <span class="h6">{{ eventDetails?.nbMaxInscrits}}</span>
+                                </li>
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="fas fa-fw fa-map-marker-alt text-primary me-2"></i>Location:</span>
+                                    <span class="h6">{{ eventDetails?.location}}</span>
+                                </li>
+           
+                            </ul>
+                            
+                            <!-- List END -->
+                        </div>
+    
+                        <div class="col-md-6">
+                            <!-- List START -->
+                            <ul class="list-group list-group-borderless">
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="bi fa-fw bi-clock text-primary me-2"></i>Duration:</span>
+                                    <span class="h6">{{ eventDetails?.duree}}</span>
+                                </li>
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="fas fa-fw fa-user-friends text-primary me-2"></i>Facilitators:</span>
+                                    <span class="h6">{{ eventDetails?.formateurs}}</span>
+                                </li>
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="bi fa-fw bi-hand-thumbs-up text-primary me-2"></i>Participation Modalities:</span>
+                                    <span class="h6">{{ eventDetails?.modalitesParticipation}}</span>
+                                </li>
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="bi fa-fw bi-cash text-primary me-2"></i>Cost:</span>
+                                    <span class="h6">{{ eventDetails?.cout}}</span>
+                                </li>
+                                
+                                
+                                
+                                <li class="list-group-item px-0">
+                                    <span class="h6 fw-light"><i class="bi fa-fw bi-star-fill text-primary me-2"></i>Rating/Review:</span>
+                                    <span class="h6">{{ averageRating }} (568)</span>
+                                </li>
+                            </ul>
+                            <!-- List END -->
+                        </div>
+                    </div>
+    
+                    
+                    <!-- Book detail START -->
+                    <div class="col-12">
+                        <!-- Tabs START -->
+                        <ul class="nav nav-pills nav-pills-bg-soft px-3" id="book-pills-tab" role="tablist">
+                            <!-- Tab item -->
+                            <li class="nav-item me-2 me-sm-4" role="presentation">
+                                <button class="nav-link mb-0 active" id="book-pills-tab-1" data-bs-toggle="pill" data-bs-target="#book-pills-1" type="button" role="tab" aria-controls="book-pills-1" aria-selected="true">Author</button>
+                            </li>
+                            <!-- Tab item -->
+                            <li class="nav-item me-2 me-sm-4" role="presentation">
+                                <button class="nav-link mb-0" id="book-pills-tab-2" data-bs-toggle="pill" data-bs-target="#book-pills-2" type="button" role="tab" aria-controls="book-pills-2" aria-selected="false">Reviews</button>
+                            </li>
+                            <!-- Tab item -->
+                            <li class="nav-item me-2 me-sm-4" role="presentation">
+                                <button class="nav-link mb-0" id="book-pills-tab-3" data-bs-toggle="pill" data-bs-target="#book-pills-3" type="button" role="tab" aria-controls="book-pills-3" aria-selected="false">Geolocation</button>
+                            </li>
+                        </ul>
+                        <!-- Tabs END -->
+                        
+                        <!-- Tab contents START -->
+                        <div class="tab-content pt-4 px-3" id="book-pills-tabContent">
+                            <!-- Content START -->
+                            <div *ngIf="eventDetails">
+                                <div class="tab-pane fade show active" id="book-pills-1" role="tabpanel" aria-labelledby="book-pills-tab-1">
+                                <div class="row g-4">
+                                    <div class="col-md-3">
+                                        <img [src]="eventDetails.userList[0]?.imageUser" class="rounded-3" alt="">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="d-sm-flex justify-content-sm-between">
+                                            <div *ngIf="eventDetails.userList && eventDetails.userList.length > 0">
+                                            <!-- Title -->
+                                            <div class="mb-3">
+                                                <h3 class="mb-0">Created By: {{ eventDetails.userList[0]?.firstName }} {{ eventDetails.userList[0]?.lastName }}</h3>
+                                                <span>Publisher</span>
+                                            </div>
+                                        </div>
+                                           
+                                        </div>
+                                        <!-- Content -->
+                                        <P class="mt-3 mt-sm-0 mb-0">{{ eventDetails.userList[0]?.description }}</P>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <!-- Content END -->
+                            <!-- Content START -->
+                            <div class="tab-pane fade" id="book-pills-2" role="tabpanel" aria-labelledby="book-pills-tab-2">
+                                <!-- Review START -->
+                                <div class="row mb-4">
+                                    <h4 class="mb-4">All Reviews</h4>
+                                    <!-- Rating info -->
+                                    <div class="col-md-4 mb-3 mb-md-0">
+                                        <div class="text-center">
+                                            <!-- Info -->
+                                            <h2 class="mb-0">{{ averageRating }}</h2>
+                                            <!-- Star -->
+                                            <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                                                <!-- Check if the current star should be full, half, or empty -->
+                                                <ng-container *ngIf="i < averageRating">
+                                                    <i class="fas fa-star text-warning"></i> <!-- Full star -->
+                                                </ng-container>
+                                                <ng-container *ngIf="averageRating !== undefined && i === averageRating && averageRating !== floor(averageRating)">
+                                                    <i class="fas fa-star-half-alt text-warning"></i> <!-- Half star -->
+                                                </ng-container>
+                                                <ng-container *ngIf="i >= averageRating">
+                                                    <i class="far fa-star text-warning"></i> <!-- Empty star -->
+                                                </ng-container>
+                                            </ng-container>
+                                            <!-- Display the average rating value -->
+                                            <span class="ms-1">{{ averageRating }}/5</span>
+                                            <!-- Display total number of reviews -->
+                                            <p class="mb-0">(Based on {{ totalReviews }} reviews)</p>
+                                        
+                                        </div>
+                                    </div>
+    
+                                    <!-- Progress-bar and star -->
+                                    <div class="col-md-8">
+                                        <div class="row align-items-center text-center">
+                                            <!-- Progress bar and Rating -->
+                                            <div class="col-6 col-sm-8">
+                                                <!-- Progress item -->
+                                                <div class="progress progress-sm bg-warning bg-opacity-15">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-6 col-sm-4">
+                                                <!-- Star item -->
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                </ul>
+                                            </div>
+    
+                                            <!-- Progress bar and Rating -->
+                                            <div class="col-6 col-sm-8">
+                                                <!-- Progress item -->
+                                                <div class="progress progress-sm bg-warning bg-opacity-15">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-6 col-sm-4">
+                                                <!-- Star item -->
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                </ul>
+                                            </div>
+    
+                                            <!-- Progress bar and Rating -->
+                                            <div class="col-6 col-sm-8">
+                                                <!-- Progress item -->
+                                                <div class="progress progress-sm bg-warning bg-opacity-15">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-6 col-sm-4">
+                                                <!-- Star item -->
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                </ul>
+                                            </div>
+    
+                                            <!-- Progress bar and Rating -->
+                                            <div class="col-6 col-sm-8">
+                                                <!-- Progress item -->
+                                                <div class="progress progress-sm bg-warning bg-opacity-15">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-6 col-sm-4">
+                                                <!-- Star item -->
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                </ul>
+                                            </div>
+    
+                                            <!-- Progress bar and Rating -->
+                                            <div class="col-6 col-sm-8">
+                                                <!-- Progress item -->
+                                                <div class="progress progress-sm bg-warning bg-opacity-15">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                            <div class="col-6 col-sm-4">
+                                                <!-- Star item -->
+                                                <ul class="list-inline mb-0">
+                                                    <li class="list-inline-item me-0 small"><i class="fas fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                    <li class="list-inline-item me-0 small"><i class="far fa-star text-warning"></i></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Review END -->
+    
+                                <div class="row">
+                                    <!-- Rating Section -->
+<div *ngFor="let rating of ratings" class="d-md-flex my-4">
+    <!-- Avatar -->
+    <div class="avatar avatar-xl me-4 flex-shrink-0">
+      <!-- Assuming rating.user.imageUser contains the URL of the user's avatar -->
+      <img class="avatar-img rounded-circle" [src]="rating.user.imageUser" alt="avatar">
+    </div>
+    <!-- Text -->
+    <div>
+      <div class="d-sm-flex mt-1 mt-md-0 align-items-center">
+        <!-- Display user's name -->
+        <h5 class="me-3 mb-0">{{ rating.user.firstName }} {{ rating.user.lastName }}</h5>
+        <!-- Rating stars -->
+        <ul class="list-inline mb-0">
+          <!-- Assuming rating.value contains the user's rating -->
+          <li class="list-inline-item me-0" *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+            <i class="fas fa-star" [ngClass]="{ 'text-warning': i < rating.valueR }"></i>
+          </li>
+        </ul>
+      </div>
+      <!-- Display rating value -->
+      <p class="mb-2">{{ rating.valueR }}/5</p>
+    </div>
+  </div>
+  
+                                    <!-- Loop through comments using *ngFor directive -->
+                                    <div *ngFor="let comment of comments" class="d-md-flex my-4">
+                                      <!-- Avatar -->
+                                      <div class="avatar avatar-xl me-4 flex-shrink-0">
+                                        <!-- Assuming comment.user.avatarUrl contains the URL of the user's avatar -->
+                                        <img class="avatar-img rounded-circle" [src]="comment.user.imageUser" alt="avatar">
+                                      </div>
+                                      <!-- Text -->
+                                      <div>
+                                        <div class="d-sm-flex mt-1 mt-md-0 align-items-center">
+                                          <!-- Display user's name -->
+                                          <h5 class="me-3 mb-0">{{ comment.user.firstName }} {{ comment.user.lastName }}</h5>
+                                          <!-- Review star -->
+                                          <ul class="list-inline mb-0">
+                                            <!-- Assuming comment.rating contains the user's rating -->
+                                            <li class="list-inline-item me-0" *ngFor="let star of [1, 2, 3, 4, 5]">
+                                            </li>
+                                          </ul>
+                                        </div>
+                                        <!-- Display comment date -->
+                                        <!-- Display comment text -->
+                                        <p class="mb-2">{{ comment.content }}</p>
+                                        <!-- Reply button -->
+                                      </div>
+                                    </div>
+                                    <!-- Divider -->
+                                    <hr>
+                                  </div>
+                                  
+    
+                                <!-- Leave Review START -->
+                               <!-- Leave Review START -->
+                               <div class="mt-2">
+                                <h5 class="mb-4">Leave a Review</h5>
+                                <div style="font-size: 20px; color: #F7C32E;">
+                                    <!-- IgxRating component -->
+                                    <igc-rating name="modelRating" [(ngModel)]="ratingValue" max="5" (ngModelChange)="onRatingChange($event)" ></igc-rating>
+                                  </div>
+                                <form class="row g-3" (ngSubmit)="addCommentToEvent()">
+                                    <!-- Message -->
+                                    <div class="col-12">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Your review" rows="3" [(ngModel)]="content" name="content"></textarea>
+                                    </div>
+                                    <!-- Button -->
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary mb-0">Post Review</button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            
+                            
+  <!-- Leave Review END -->
+  
+                                  
+                                <!-- Leave Review END -->
+    
+                            </div>
+                            <!-- Content END -->
+    
+                            <div class="tab-pane fade" id="book-pills-3" role="tabpanel" aria-labelledby="book-pills-tab-3">
+                                <div #map style="height: 400px;" leaflet [leafletOptions]="mapOptions" [leafletLayers]="layers">
+                                </div>
+                              
+                              
+                              
+    
+                                
+                            </div>
+                            <!-- Content END -->
+                                           
+    
+                                <!-- Content -->
+                               
+                            </div>
+                            <!-- Content END -->
+                        </div>
+                        <!-- Tab contents END -->
+                    </div>
+                    <!-- Book detail END -->
+                </div>
+            </div>
+                <!-- Main content END -->
+            
+    </section>
+    <!-- =======================
+    Page content END -->
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- Reservation Modal -->
+<div class="modal fade" #reservationModal tabindex="-1" aria-labelledby="reservationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-dark">
+          <h5 class="modal-title text-white" id="reservationModalLabel">Confirm Reservation</h5>
+          <button type="button" class="btn btn-sm btn-light mb-0" (click)="closeModal()" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to make a reservation for the event:</p>
+      
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="phoneNumber">
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger-soft my-0" (click)="closeModal()">Close</button>
+            <button type="button" class="btn btn-primary" (click)="confirmReservation()">Confirm Reservation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+    </main>
+    <!-- **************** MAIN CONTENT END **************** -->

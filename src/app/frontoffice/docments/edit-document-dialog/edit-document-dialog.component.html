@@ -1,0 +1,51 @@
+<h1 mat-dialog-title class="dialog-title">Edit Document</h1>
+<div mat-dialog-content>
+  <form #editDocumentForm="ngForm" (ngSubmit)="onSubmit()" class="form-container">
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" [(ngModel)]="editedDocument.titleDoc" name="titleDoc" required #titleDoc="ngModel" disabled>
+        <mat-error *ngIf="titleDoc.invalid && (titleDoc.dirty || titleDoc.touched)">
+          Title is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>Content</mat-label>
+        <textarea matInput placeholder="Content" [(ngModel)]="editedDocument.content" name="content" required #content="ngModel" rows="4"></textarea>
+        <mat-error *ngIf="content.invalid && (content.dirty || content.touched)">
+          Content is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>Price</mat-label>
+        <input matInput type="number" placeholder="Price" [(ngModel)]="editedDocument.price" name="price" required #price="ngModel">
+        <mat-error *ngIf="price.invalid && (price.dirty || price.touched)">
+          Price is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="form-field">
+      <mat-form-field appearance="fill">
+        <mat-label>Module</mat-label>
+        <mat-select placeholder="Module" [(ngModel)]="editedDocument.module" name="module" required #moduleSelect="ngModel">
+          <mat-option *ngFor="let module of modules" [value]="module.nomModule">{{ module.nomModule }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="moduleSelect.invalid && (moduleSelect.dirty || moduleSelect.touched)">
+          Module is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="editDocumentForm.invalid">Save</button>
+      <button mat-raised-button type="button" (click)="onCancel()">Cancel</button>
+    </div>
+  </form>
+</div>

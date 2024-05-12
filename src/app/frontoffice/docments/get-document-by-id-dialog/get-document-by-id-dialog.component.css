@@ -1,0 +1,36 @@
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    box-shadow: none; 
+  }
+  
+  .close-icon {
+    color: #ff0000; 
+  }
+
+  .delete-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    box-shadow: none;
+  }
+  .edit-button{
+    position: absolute;
+    bottom: 10px;
+    right: 65px;
+    box-shadow: none; 
+  }
+  
+  .delete-icon .edit-icon{
+    color: #0c0c0c; 
+  }
+  .sales-info {
+    border-top: 1px solid #ccc;
+  }
+  
+  .total-sales,
+  .total-amount {
+    margin-bottom: 10px;
+  }
+

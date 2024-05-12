@@ -1,0 +1,12 @@
+.active {
+    color: green;
+  }
+  .inactive {
+    color: red;
+  }
+  .user-image {
+    width: 100px;      
+    height: 100px;     
+    object-fit: cover; 
+    border: 1px solid #ffffff;
+}

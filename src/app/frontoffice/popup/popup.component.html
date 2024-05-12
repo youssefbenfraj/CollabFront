@@ -1,0 +1,74 @@
+ 
+ <div class="modal-dialog modal-lg caption-side: top;">
+    <div class="modal-content">
+        <div class="modal-header bg-dark">
+            <h5 class="modal-title text-white" id="addNewcardLabel">Add revision</h5>
+                <button type="button" class="btn btn-sm btn-light mb-0" (click)="closePopup()" aria-label="Close">
+
+                <i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-body">
+
+            <form class="m-3" (submit)="addRevision()">
+                <div class="row">
+                    <!-- Title -->
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" placeholder="subject "
+                                [(ngModel)]="newRevision.sujetRev" name="sujet">
+                            <label for="subject" class="form-label"><i class="fas fa-pen"></i> subject</label>
+                            <div class="invalid-feedback">
+                                Please enter the revision subject.
+                            </div>
+                        </div>
+                    </div>
+                     
+                    <!-- Date -->
+                    <div class="col-md-6">
+                        <input id="dateDebut" class="form-control" type="date" [(ngModel)]="newRevision.date_debut"
+                            name="dateDebut">
+                        <div class="invalid-feedback">
+                            <i class="fas fa-calendar"></i> Please select the revision date.
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                 
+
+
+                            <div class="col-md-6">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" placeholder=" Objective "
+                                        [(ngModel)]="newRevision.objectif" name="objectif">
+                                    <label for="notes" class="form-label"><i class="fas fa-pen"></i> Objective</label>
+                                    <div class="invalid-feedback">
+                                        Please enter the revision objective.
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Description -->
+                            <!-- Ajoutez les autres champs de formulaire ici -->
+
+                            <!-- Bouton de soumission -->
+                            <div class="col-12">
+                                <div class="d-grid">
+                                    <button type="submit" class="btn btn-primary">Add Revision</button>
+                                </div>
+                            </div>
+            </form>
+
+
+
+        </div>
+         
+    </div>
+</div>
