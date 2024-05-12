@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 export class DocumentService {
   private documentsSubject: BehaviorSubject<Document[]> = new BehaviorSubject<Document[]>([]);
 
-  private apiUrl = 'http://localhost:8087';
+  private apiUrl = 'http://192.168.146.137:8087';
 
   constructor(private http: HttpClient) {}
   createDocument(document: Document,id:number): Observable<Document> {
