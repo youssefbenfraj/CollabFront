@@ -8,7 +8,7 @@ import { catchError, finalize, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8087/api/auth';
+  private apiUrl = 'http://192.168.146.137:8087/api/auth';
 
    jwtToken: any; 
    userId: number | undefined;
