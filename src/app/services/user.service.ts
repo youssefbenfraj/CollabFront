@@ -10,7 +10,7 @@ export class UserService {
   getLevels() {
     throw new Error('Method not implemented.');
   }
-  private apiUrl = 'http://localhost:8087/api';
+  private apiUrl = 'http://192.168.146.137:8087/api';
   constructor(private http: HttpClient, private router: Router) {}
 
   addUser(userData: { [key: string]: any }): Observable<any> {
