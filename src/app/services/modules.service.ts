@@ -6,7 +6,7 @@ import { Modules } from '../models/modules.model';
   providedIn: 'root'
 })
 export class ModulesService {
-  private baseUrl = 'http://localhost:8087';  
+  private baseUrl = 'http://192.168.146.137:8087';  
 
   constructor(private http: HttpClient) { }
 
