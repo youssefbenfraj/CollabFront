@@ -9,7 +9,7 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 })
 export class BuysService {
 
-  private apiUrl = 'http://localhost:8087';
+  private apiUrl = 'http://192.168.146.137:8087';
 
   constructor(private http: HttpClient) {}
   createbuy(buy: Buys): Observable<Buys> {
